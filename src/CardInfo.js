@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class CardInfo extends Component {
     constructor(props) {
         super(props);
+        this.showCardInfo = this.showCardInfo.bind(this);
         this.state = {
             cards: [
                 { 
@@ -31,17 +32,32 @@ class CardInfo extends Component {
                     purchaseOD: 6,
                     creditAvailable: 3000
                 },
-            ]
+            ],
+            show: {
+                'Student Life Card': 'none',
+                'Anywhere Card': 'none',
+                'Liquid Card': 'none'
+            }
+        }
+    }
+
+    showCardInfo(cardType) {
+        let keyName = Object.keys(this.state.show).filter(key => key == cardType);
+        if(this.state.show[cardType] == 'none') {
+            this.setState({show: {...this.state.show, [keyName]: 'initial'}})
+        } else if(this.state.show[cardType] == 'initial') {
+            this.setState({show: {...this.state.show, [keyName]: 'none'}})
         }
     }
     render() {
+        console.log(this.state.show);
         return (
             <div className='cardsInfo'>
                 Available cards:
                 {this.state.cards.map((card, index) => (
-                    <div key={index} onClick={() => console.log('clicked')}>
+                    <div key={index} onClick={() => this.showCardInfo(card.type)}>
                         {card.type}
-                        <div className='cardInfo'>
+                        <div className='cardInfo' style={{display: this.state.show[card.type]}}>
                             <p>{card.description}</p>
                             <p>Apr - {card.apr}%</p>
                             <p>Balance Transfer Offer Duration - {card.balancetTOD} months</p>
