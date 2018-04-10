@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import UserForm from './UserForm';
+import CardInfo from './CardInfo';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        displayCards: false,
 
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.getCardInfo = this.getCardInfo.bind(this);
+  }
+
+  getCardInfo(){
+    // calculateCardStatus();
+    this.setState({cards: 'all', displayCards: true})
   }
 
   handleInputChange(event) {
@@ -20,7 +28,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <UserForm handleInputChange={this.handleInputChange}/>
+        <UserForm
+          handleInputChange={this.handleInputChange}
+          getCardInfo={this.getCardInfo}
+          />
+        {this.state.displayCards && 
+          <CardInfo returnCards={this.state.cards}/>}
       </div>
     );
   }

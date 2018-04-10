@@ -92,9 +92,7 @@ export default function UserForm(props){
                   onChange={props.handleInputChange}
               />
           </div>
-          <button className='submitButton'>
-            Submit
-          </button>
+          <input className='submit' type="submit" value="Submit" onClick={() => props.getCardInfo()}/>
         </form>
     )
 }
