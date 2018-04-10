@@ -6,15 +6,33 @@ class App extends Component {
     super(props);
     this.state = {
         displayCards: false,
+        eligibleCards: ['Anywhere Card']
 
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.getCardInfo = this.getCardInfo.bind(this);
+    this.calculateCardStatus = this.calculateCardStatus.bind(this);
   }
 
   getCardInfo(){
-    // calculateCardStatus();
-    this.setState({cards: 'all', displayCards: true})
+    this.calculateCardStatus();
+    console.log(console.log(this.state.eligibleCards));
+    this.setState({displayCards: true})
+  }
+
+  calculateCardStatus() {
+    let eligibleCards = [];
+    console.log('calculating');
+    if(this.state.employmentStatus == 'Student' &&  parseInt(this.state.annualIncome, 10) > 16000) {
+      eligibleCards.push('Liquid Card');
+      eligibleCards.push('Student Life Card');
+    } else if(parseInt(this.state.annualIncome, 10) > 16000){
+      eligibleCards.push('Liquid Card');
+    } else if(this.state.employmentStatus == 'Student') {
+      eligibleCards.push('Student Life Card');
+    }
+    console.log(eligibleCards);
+    this.setState({eligibleCards: [...this.state.eligibleCards, ...eligibleCards]})
   }
 
   handleInputChange(event) {
@@ -33,7 +51,7 @@ class App extends Component {
           getCardInfo={this.getCardInfo}
           />
         {this.state.displayCards && 
-          <CardInfo returnCards={this.state.cards}/>}
+          <CardInfo returnCards={this.state.cards} eligibleCards={this.state.eligibleCards}/>}
       </div>
     );
   }

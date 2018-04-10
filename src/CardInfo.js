@@ -43,18 +43,17 @@ class CardInfo extends Component {
 
     showCardInfo(cardType) {
         let keyName = Object.keys(this.state.show).filter(key => key == cardType);
-        if(this.state.show[cardType] == 'none') {
-            this.setState({show: {...this.state.show, [keyName]: 'initial'}})
-        } else if(this.state.show[cardType] == 'initial') {
-            this.setState({show: {...this.state.show, [keyName]: 'none'}})
-        }
+        let showValue = this.state.show[cardType];
+         showValue == 'none' ?
+             this.setState({show: {...this.state.show, [keyName]: 'initial'}}) :
+             this.setState({show: {...this.state.show, [keyName]: 'none'}})
     }
+    
     render() {
-        console.log(this.state.show);
         return (
             <div className='cardsInfo'>
                 Available cards:
-                {this.state.cards.map((card, index) => (
+                {this.state.cards.filter(card => this.props.eligibleCards.includes(card.type)).map((card, index) => (
                     <div key={index} onClick={() => this.showCardInfo(card.type)}>
                         {card.type}
                         <div className='cardInfo' style={{display: this.state.show[card.type]}}>

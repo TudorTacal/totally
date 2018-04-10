@@ -16,7 +16,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">First Name</label><br/><br/>
+              <label >First Name</label><br/><br/>
               <input
                   className="form-control"  
                   id="firstName"            
@@ -27,7 +27,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">Last Name</label><br/><br/>
+              <label >Last Name</label><br/><br/>
               <input
                   className="form-control"  
                   id="lastName"            
@@ -38,7 +38,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">Date of Birth</label><br/><br/>
+              <label >Date of Birth</label><br/><br/>
               <input
                   className="form-control"  
                   id="dateBirth"            
@@ -49,7 +49,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">Annual Income</label><br/><br/>
+              <label >Annual Income</label><br/><br/>
               <input
                   className="form-control"  
                   id="annualIncome"            
@@ -60,7 +60,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">Employment Status</label><br/><br/>
+              <label >Employment Status</label><br/><br/>
               <input
                   className="form-control"  
                   id="employmentStatus"            
@@ -71,7 +71,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">House Number</label><br/><br/>
+              <label >House Number</label><br/><br/>
               <input
                   className="form-control"  
                   id="houseNumber"            
@@ -82,7 +82,7 @@ export default function UserForm(props){
               />
           </div>
           <div className="formGroup">
-              <label htmlFor="author">Post Code</label><br/><br/>
+              <label >Post Code</label><br/><br/>
               <input
                   className="form-control"  
                   id="postCode"            
