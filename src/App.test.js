@@ -19,8 +19,11 @@ describe('App', () => {
       submitApplication(wrapper, 'Mr', 'Ollie', 'Murphree', '01/07/1970', '34000', 'Full Time Employment', '700', 'BS14 9PR');
       let cardInfoWrapper = wrapper.find('.cardInfo');
 
-      // expect(wrapper).toMatchSnapshot(); //Jest hangs here unfortunately so I can't use this approach to test every case
-      
+      /* expect(wrapper).toMatchSnapshot(); //Jest hangs here unfortunately so I can't use this approach to test every case
+       To get this done I would have to use enzyme like below for each element which honestly I didn't have time to do.
+      Pseudocode:
+      expect(wrapper.find(allRenderedElementsText(div,p))).toEqual(allExpectedElementsValues);
+      */ 
     })
 });
 
