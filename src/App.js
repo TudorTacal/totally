@@ -16,13 +16,11 @@ class App extends Component {
 
   getCardInfo(){
     this.calculateCardStatus();
-    console.log(console.log(this.state.eligibleCards));
     this.setState({displayCards: true})
   }
 
   calculateCardStatus() {
     let eligibleCards = [];
-    console.log('calculating');
     if(this.state.employmentStatus == 'Student' &&  parseInt(this.state.annualIncome, 10) > 16000) {
       eligibleCards.push('Liquid Card');
       eligibleCards.push('Student Life Card');
@@ -31,7 +29,6 @@ class App extends Component {
     } else if(this.state.employmentStatus == 'Student') {
       eligibleCards.push('Student Life Card');
     }
-    console.log(eligibleCards);
     this.setState({eligibleCards: [...this.state.eligibleCards, ...eligibleCards]})
   }
 

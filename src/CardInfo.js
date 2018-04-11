@@ -50,11 +50,13 @@ class CardInfo extends Component {
     }
     
     render() {
+        let totalCredit = this.state.cards.filter(card => this.props.eligibleCards.includes(card.type))
+        totalCredit = totalCredit.reduce((acc, value) => {return acc+value.creditAvailable}, 0);
         return (
             <div className='cardsInfo'>
                 Available cards:
                 {this.state.cards.filter(card => this.props.eligibleCards.includes(card.type)).map((card, index) => (
-                    <div key={index} onClick={() => this.showCardInfo(card.type)}>
+                    <div className='cardInfo' key={index} onClick={() => this.showCardInfo(card.type)}>
                         {card.type}
                         <div className='cardInfo' style={{display: this.state.show[card.type]}}>
                             <p>{card.description}</p>
@@ -65,7 +67,7 @@ class CardInfo extends Component {
                         </div>
                     </div>
                 ))}
-
+                <p>Total credit available: {totalCredit}</p>
             </div>
         )
     }
